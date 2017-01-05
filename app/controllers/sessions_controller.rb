@@ -1,0 +1,17 @@
+class SessionsController < ApplicationController
+
+  def create
+    if params[:name].blank?
+      redirect_to '/login'
+    else
+      session[:name] = params[:name]
+      redirect_to '/show'
+    end
+  end
+
+  def destroy
+    session[:name] = nil
+    redirect_to '/login'
+  end
+
+end
